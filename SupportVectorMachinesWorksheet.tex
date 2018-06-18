@@ -1,0 +1,87 @@
+\documentclass[10pt]{article}
+\usepackage{itcep, stmaryrd, tikz, pgflibraryplotmarks, multicol}
+\usepackage[margin=1in, nohead, pdftex]{geometry}
+
+\topmargin -0.2in
+\pagestyle{empty}
+\singlespacing
+\let\oldhat\hat
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+
+\definecolor{light-gray}{gray}{0.95}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
+\newcommand{\headerclass}{\code{<run>:\textbackslash the\textbackslash world} Machine Learning Camp}
+\newcommand{\headersection}{Day 2: Exploring Data with Algorithms}
+\newcommand{\headertitle}{Classification using (linear) Support Vector Machines}
+
+\def\C{\mathbb{C}}
+\def\R{\mathbb{R}}
+\parindent 0ex
+\begin{document}
+%==================================================================================================================================================
+\headerclass\xspace \hspace{\stretch{1}} \headersection\\
+\begin{center}{ \large \textbf{\headertitle} }\end{center}
+%==================================================================================================================================================
+
+
+
+
+
+``Support vector machines'' are one way of classifying data observations. 
+\begin{itemize}
+\item Support: the support of a function is the set where the function isn?t zero
+\item Vector: an arrow that points to a point; a direction and a magnitude
+\item Machine: it sounds cool! 
+\end{itemize}
+We?ll start with \textit{linear} support vector machines, and in fact the simplest version: the ``maximal margin classifier''. The idea is that you pick a linear function like $f(x) = 3x+2y-1$, and then you split your data into two classes using the line where that linear function equals zero. One of the classes should be on the side where $f(x) > 0$ and the other class should be on the side where $f(x) < 0$. (Yes, just two classes -- if you want to deal with more classes, you iterate this again and again.)
+\bigskip
+\begin{center}
+Big idea: Pick linear functions to separate your groups
+\end{center}
+\bigskip
+
+Fake data first:
+
+Here is some fake data, designed to be nice. Can you draw a line to separate the two groups? (Can you draw more than one line?) Based on yesterday?s activity, you know you can! But let?s get more specific:
+\begin{center}
+\includegraphics{TwoClusters.png}
+\end{center}
+
+Compare the line you drew with the lines your neighbor drew. Some yes-no questions:
+\begin{itemize}
+\item[$\square$] If I removed the white point at (-8,-1), would you change your separating line?
+\item[$\square$] If I removed the black point at (3,2), would you change your separating line?
+\item[$\square$] If I removed the white point at (-7,1), would you change your separating line?
+\item[$\square$] If I removed the black point at (3,0), would you change your separating line?
+\end{itemize}
+Talk with your neighbor -- do you agree?
+\vspace{1in}
+	
+Given your discussion, which points do you think matter the most?
+
+\vspace{1in}
+The points that matter the most are the ones that give us the \textit{support vectors}.
+
+
+\begin{center}
+\bf{The Support Vector Machine Algorithm}
+\end{center}
+
+
+How do we mathematically decide where the line between two groups should go? This is an \textit{optimization} problem. ``Optimal'' means ``best,'' measured in a specific mathematical way.
+
+The people who invented support vector machines (SVM) decided that they wanted the widest possible ?street? between the two groups of data. This is called the margin. I want to use a ?street? analogy because you want a lane on each side of your separating line!
+
+\begin{itemize}
+\item This is a supervised learning problem, so you need data separated into two classes, labeled by $1$ and $-1$.
+\item  You want to find the margin M (the ?width of the lanes in the street?) that is maximal, as big as possible. Remember the ?street? can contain no data. 
+\item Here are the constraints for your data: 
+\begin{iitemize}
+\iitem You have points $\vec{x}_1, \ldots, \vec{x}_n$ in your training data. For instance, $\vec{x}_1 = (x_{11}, x_{12})$ and $\vec{x}_2 = (x_{21}, x_{22})$ and $\vec{x}_3 = (x_{31}, x_{32})$.
+\iitem You want to find weights $\beta_1$ and $\beta_2$ so that $\beta_1^2 +\beta_2^2
+\end{iitemize}
+\end{itemize}
+
+\end{document}
