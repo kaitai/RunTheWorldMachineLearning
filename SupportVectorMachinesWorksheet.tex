@@ -2,6 +2,7 @@
 \usepackage{itcep, stmaryrd, tikz, pgflibraryplotmarks, multicol}
 \usepackage[margin=1in, nohead, pdftex]{geometry}
 \usepackage{MnSymbol,wasysym}
+\usepackage{hyperref}
 
 \topmargin -0.2in
 \pagestyle{empty}
@@ -83,13 +84,18 @@ If all the white dots give you outputs with the same sign from $f(x_1,x_2)$, and
 \pagebreak
 
 \begin{center}
-\bf{The Support Vector Machine Algorithm in 2 dimensions}
+\bf{The Support Vector Machine Algorithm (or Maximal Margin Classifier) in 2 dimensions}
 \end{center}
 
 
 How do we mathematically decide where the line between two groups should go? This is an \textit{optimization} problem. ``Optimal'' means ``best,'' measured in a specific mathematical way.
 
 The people who invented support vector machines (SVM) decided that they wanted the widest possible ``street'' between the two groups of data. This is called the margin. I want to use a ``street'' analogy because you want a lane on each side of your separating line!
+
+Here is a picture from page 342 of the book, ``Introduction to Statistical Learning with R'' (found at \url{https://www-bcf.usc.edu/~gareth/ISL/}).\footnote{this is a great book!}
+\begin{center}
+\includegraphics{StatLearningMarginPage357.pdf}
+\end{center}
 
 \begin{itemize}
 \item This is a supervised learning problem, so you need data separated into two classes, labeled by $1$ and $-1$.
@@ -102,6 +108,6 @@ The people who invented support vector machines (SVM) decided that they wanted t
 \end{itemize}
 \end{itemize}
 
-This optimization is not that hard if you are in multivariable calculus \smiley{} but if you are in algebra, trig, or single-variable calculus, this is hard. We'll talk through it.
+This optimization is not that hard if you are in multivariable calculus \smiley{} but if you are in algebra, trig, or single-variable calculus, this is hard. We'll talk through it with pictures!!
 
 \end{document}
