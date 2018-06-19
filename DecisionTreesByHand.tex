@@ -1,8 +1,9 @@
 \documentclass[10pt]{article}
 \usepackage{itcep, stmaryrd, tikz, pgflibraryplotmarks, multicol}
-\usepackage[margin=1in, nohead, pdftex]{geometry}
+\usepackage[margin=1in, nohead, pdftex, includefoot]{geometry}
 \usepackage{MnSymbol,wasysym}
 \usepackage{hyperref}
+
 
 \topmargin -0.2in
 \pagestyle{empty}
@@ -21,6 +22,9 @@
 \def\C{\mathbb{C}}
 \def\R{\mathbb{R}}
 \parindent 0ex
+
+%\cfoot{Kaisa Taipale, 2018}
+
 \begin{document}
 %==================================================================================================================================================
 \headerclass\xspace \hspace{\stretch{1}} \headersection\\
@@ -115,19 +119,24 @@ yes\\
 \hline
 \end{tabular}
 \end{center}
+First, use your intuition to answer the two questions below. Then, make a decision tree by trial and error. Use this as scratch paper and try making a decision tree:
+\vfill
+\textbf{Question 1:} This weekend, you don't think it will rain but it will be 90 degrees and 76 percent humidity. Do you think the game will happen? 
 
-This weekend, you don't think it will rain but it will be 90 degrees and 76 percent humidity. Do you think the game will happen? What about if it will rain but it will be 70 degrees with low humidity?
+\bigskip
+
+
+\textbf{Question 2:} What about if it will rain but it will be 70 degrees with low humidity?
 
 \vfill
-Here there are two outcomes (play/don't play) but three variables. Hard to draw a picture. Could you make a decision tree that works pretty well by trial and error? Use this as scratch paper and try making a decision tree:
-\vfill
+
 \pagebreak
 
 
 \begin{center}
-Deciding on the decision tree
+\textbf{Deciding on the decision tree}
 \end{center}
-Back to the usual problem: what is the best decision tree? Depends on your definition of ``best,'' of course! Two ways are really common: Gini index/Gini impurity\footnote{Gini impurity measures how likely a mistake is if you stopped at a branch and just randomly picked some outcome from that division. Ask if you want to know more.}, and information gain. We?ll concentrate on information gain in this camp.
+Back to the usual problem: what is the best decision tree? Depends on your definition of ``best,'' of course! Two ways are really common: Gini index/Gini impurity\footnote{Gini impurity measures how likely a mistake is if you stopped at a branch and just randomly picked some outcome from that division. Ask if you want to know more.}, and information gain. We'll concentrate on \textit{information gain} in this camp.
 
 
 Information gain uses the concept of information entropy, how much information is contained in a set of data (!). Yes, this entropy is also the measure of disorder in the universe! Entropy is a number between zero and one. You can think of it as a measure of disorder or of uncertainty. For instance, 
@@ -140,17 +149,20 @@ Can you check this?
 
 
 Information gain is about the change in entropy as you make branches in the decision tree.
-We?ll implement entropy calculations in Excel. They are kind of a pain to do. You will be very happy to move to Python?.
+We will implement entropy calculations in Excel. They are kind of a pain to do. You will be very happy to move to Python...
+\medskip
 
+Let's look at entropy and information gain. 
 
-Let?s look at entropy and information gain. 
-You?re doing a classification problem, so you want to classify outcomes as ?yes? or ?no?, for instance. Let $p_1$ be the fraction of ?yes? outcomes and $p_2$ the fraction of ?no? outcomes.
-The entropy of the whole set, or information content, is $-p1log2 p1- p2log2 p2$.
-If only one outcome happens (only ?yes? or only ?no? in our example) we say the entropy is zero. 
+You're doing a classification problem, so you want to classify outcomes as ``yes'' or ``no,'' for instance. Let $p_1$ be the fraction of ``yes'' outcomes and $p_2$ the fraction of ``no'' outcomes.
 
-Question 1: For the soccer game example, what is the entropy of the set, using $p1$ for the fraction of games cancelled last year and $p2$ for the fraction of games played as scheduled?
+The entropy of the whole set, or the information content, is $-p_1 \log_2 p_1- p_2 \log_2 p_2$.
+If only one outcome happens (only ``yes'' or only ``no'' in our example) we say the entropy is zero. 
+\bigskip
 
+\textbf{Question 3:} For the soccer game example, what is the entropy of the entire set, using $p_1$ for the fraction of games cancelled last year and $p_2$ for the fraction of games played as scheduled?
 
+\vspace{1.5in}
 
 
 
@@ -160,9 +172,9 @@ To decide what variable to split on, we need to find out how much the entropy ch
 \begin{itemize}
 \item If we split on the rain variable, we need to find the average entropy of each branch.
 \item If we split on the humidity variable, we need to find the average entropy of each branch.
-\item Temperature is a continuous variable instead of a categorical variable, so we?d have to try a bunch of temperature splits and test all of them! You can see why we want to use a computer here!
+\item Temperature is a continuous variable instead of a categorical variable, so we'd have to try a bunch of temperature splits and test all of them! You can see why we want to use a computer for this one!
 \end{itemize}
-Question 2: Try computing the average entropy for splitting on the rain variable (so find the entropy for how many games played/cancelled for rain = yes, and the entropy for games played/cancelled for rain=no, and take their average).
+\textbf{Question 4:} Compute the average entropy for splitting on the rain variable (so find the entropy for how many games played versus cancelled when it did rain, and the entropy for games played versus cancelled when it did not rain, and take their average).
 
 
 \vfill
